@@ -16,4 +16,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\themes\plugins\jqvmap\js\maps\" />
+    <Folder Include="wwwroot\themes\plugins\summernote\css\" />
+    <Folder Include="wwwroot\themes\themes\" />
+  </ItemGroup>
+
 </Project>
