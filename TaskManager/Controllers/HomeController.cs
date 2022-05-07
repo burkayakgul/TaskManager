@@ -23,5 +23,10 @@ namespace TaskManager.Controllers
             return View();
         }
 
+
+        public IActionResult CreateTask()
+        {
+            return View();
+        }
     }
 }
