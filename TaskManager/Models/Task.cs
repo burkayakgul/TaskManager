@@ -34,7 +34,6 @@ namespace TaskManager.Models
         public DateTime createdAt { get; set; }
         public DateTime taskDate { get; set; }
         public TaskStatus status { get; set; }
-        public DateTime adjourn { get; set; }
 
         public Priority priority { get; set; }
 

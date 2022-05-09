@@ -8,7 +8,8 @@ namespace TaskManager.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=taskdatabase.db");
+
         }
-        
+
     }
 }

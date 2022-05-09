@@ -11,7 +11,7 @@ using TaskManager.Models;
 namespace TaskManager.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220507214443_InitialCreate")]
+    [Migration("20220508030033_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,6 @@ namespace TaskManager.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("adjourn")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("content")
                         .IsRequired()

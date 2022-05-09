@@ -1,18 +1,128 @@
-﻿<div class="container">
-    <form>
-      <div class="form-group">
-        <label for="taskHeader">Header</label>
-        <input type="text" class="form-control" id="taskHeader" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div class="form-group">
-        <label for="taskContent">Content</label>
-        <textarea class="form-control" id="taskContent" rows="3"></textarea>
-      </div>
-      <div class="form-check">
-        <input type="date" class="form-control" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-validation">
+                                    <form class="form-valide" asp-controller="Home" asp-action="CreateTask" method="post">
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="taskHeader">Header <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="taskHeader" name="header" placeholder="Enter a header">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="taskContent">Content <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <textarea class="form-control" id="taskContent" name="content" rows="5" placeholder="What would you like to see?"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="date-format">Task Date <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                            <input type="text" class="form-control" placeholder="2017-06-04" id="mdate" name="date" data-dtp="dtp_9TSCh">    
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="taskTimeMenu">Choose Time</label>
+                                            <div class="col-lg-6">
+                                                <div class="input-group clockpicker">
+                                                    <input type="text" class="form-control" name="time" value="09:30"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="taskPriority">Priority <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="taskPriority" name="priority">
+                                                    <option value="">Please select</option>
+                                                    <option value="0">High</option>
+                                                    <option value="1">Medium</option>
+                                                    <option value="2">Low</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+
+
+@section Scripts {
+    <script src="~/themes/plugins/moment/moment.js"></script>
+    <script src="~/themes/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="~/themes/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="~/themes/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="~/themes/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="~/themes/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="~/themes/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="~/themes/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/themes/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="~/themes/js/plugins-init/form-pickers-init.js"></script>
+  
+    <script>
+        $(document).ready(function() {
+            $(function () {
+                $('#date').bootstrapMaterialDatePicker({
+                    format: 'DD/MM/YYYY HH:mm',
+                    lang: 'fr',
+                    weekStart: 1,
+                    cancelText : 'ANNULER',
+                    nowButton : true,
+                    switchOnClick : true
+                });
+            });
+        };
+        
+    </script>
+
+}
+
+@section Titles {
+    <!-- Custom Stylesheet -->
+    <link href="~/themes/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="~/themes/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="~/themes/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="~/themes/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <!-- Daterange picker plugins css -->
+    <link href="~/themes/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="~/themes/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}

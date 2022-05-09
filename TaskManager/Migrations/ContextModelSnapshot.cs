@@ -23,9 +23,6 @@ namespace TaskManager.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("adjourn")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("content")
                         .IsRequired()
                         .HasColumnType("TEXT");

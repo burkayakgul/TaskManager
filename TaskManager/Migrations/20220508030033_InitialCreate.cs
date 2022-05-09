@@ -20,7 +20,6 @@ namespace TaskManager.Migrations
                     createdAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     taskDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     status = table.Column<int>(type: "INTEGER", nullable: false),
-                    adjourn = table.Column<DateTime>(type: "TEXT", nullable: false),
                     priority = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

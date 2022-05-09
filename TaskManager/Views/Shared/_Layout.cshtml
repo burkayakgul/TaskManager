@@ -8,14 +8,10 @@
     <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/themes/images/favicon.png">
-    <!-- Pignose Calender -->
-    <link href="~/themes//plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-    <!-- Chartist -->
-    <link rel="stylesheet" href="~/themes//plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="~/themes//plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="~/themes/css/style.css" rel="stylesheet">
 
+    @RenderSection("Titles", required: false)
 </head>
 
 <body>
@@ -56,27 +52,7 @@
     <script src="~/themes/js/gleek.js"></script>
     <script src="~/themes/js/styleSwitcher.js"></script>
 
-    <!-- Chartjs -->
-    <script src="~/themes//plugins/chart.js/Chart.bundle.min.js"></script>
-    <!-- Circle progress -->
-    <script src="~/themes//plugins/circle-progress/circle-progress.min.js"></script>
-    <!-- Datamap -->
-    <script src="~/themes//plugins/d3v3/index.js"></script>
-    <script src="~/themes//plugins/topojson/topojson.min.js"></script>
-    <script src="~/themes//plugins/datamaps/datamaps.world.min.js"></script>
-    <!-- Morrisjs -->
-    <script src="~/themes//plugins/raphael/raphael.min.js"></script>
-    <script src="~/themes//plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="~/themes//plugins/moment/moment.min.js"></script>
-    <script src="~/themes//plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="~/themes//plugins/chartist/js/chartist.min.js"></script>
-    <script src="~/themes//plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-    <script src="~/themes//js/dashboard/dashboard-1.js"></script>
+    @RenderSection("Scripts", required: false)
 
 </body>
 
