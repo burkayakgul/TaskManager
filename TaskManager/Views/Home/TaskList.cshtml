@@ -2,6 +2,7 @@
 @model TaskManager.Models.Task
 @{
     var data = ViewData["Data"];
+    var todayTasks = ViewData["TodayTasks"];
 }
 
 <div class="content-body">
@@ -15,13 +16,38 @@
                 </div>
             </div>
             <!-- row -->
-
+            
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Today's Tasks</h4>
+                                <div class="card-content">
+                                    @foreach(var today in todayTasks as IEnumerable<TaskManager.Models.Task>)
+                            {
+                                <div class="alert alert-dismissible fade show @if(@today.priority == Priority.High){
+                                        @String.Format("alert-danger");
+                                }else if(@today.priority == Priority.Medium){
+                                        @String.Format("alert-warning");
+                                }else{
+                                    @String.Format("alert-success");
+                                }">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                        </button> <strong>@today.header </strong> Bugün tamamlaman gereken görevin acele et!
+                                    </div>
+                            }
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Data Table</h4>
+                                <h4 class="card-title">Tasks</h4>
+                                <a type="button" asp-controller="Home" asp-action="CreateTask" class="btn mb-1 btn-success">Add New Task</a>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -31,6 +57,7 @@
                                                 <th>Date</th>
                                                 <th>Priority</th>
                                                 <th>Status</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -40,8 +67,27 @@
                                             <td>@item.ID</td>
                                             <td>@item.header</td>
                                             <td>@item.taskDate</td>
-                                            <td>@item.priority</td>
-                                            <td>@item.status</td>
+                                            <td style="@if (@item.priority == Priority.High)
+                                                       {
+                                                           @String.Format("background-color:#ffdfdf;color:#853131");
+                                                       }else if(@item.priority == Priority.Medium){
+                                                           @String.Format("background-color:#fcebdd;color:#7e522d");
+                                                       }else{
+                                                           @String.Format("background-color:#e2f7e2;color:#3a713a");
+                                                       }">@item.priority</td>
+                                            <td>
+                                                <div class="progress mb-3" style="height: 9px;">
+                                                    <div class="progress-bar bg-info wow  progress-" style="width: @if(@item.status == TaskManager.Models.TaskStatus.notStarted){
+                                                                @String.Format("10%");
+                                                        }else if(@item.status == TaskManager.Models.TaskStatus.started){
+                                                                @String.Format("50%");
+                                                        }else{
+                                                                @String.Format("100%");
+                                                        };" role="progressbar"><span class="sr-only">@((int)item.status)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><a asp-controller="Home" asp-action="EditTask" asp-route-id="@item.ID" type="button" class="btn mb-1 btn-rounded btn-outline-info">Info</a></td>
                                         </tr>
                                     }
                                 </tbody>
@@ -52,6 +98,7 @@
                                                 <th>Date</th>
                                                 <th>Priority</th>
                                                 <th>Status</th>
+                                                <th>    </th>
                                             </tr>
                                         </tfoot>
                                     </table>
